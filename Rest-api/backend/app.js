@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/webbshop', productController);
-app.use('/api/webbshop/users', userController);
+app.use('/api/users', userController);
 
 
 

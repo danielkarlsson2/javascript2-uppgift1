@@ -1,8 +1,11 @@
 // const res = require('express/lib/response');
-const bcrypt = require('bcryptjs');
 const User = require('./userSchema');
+const bcrypt = require('bcryptjs');
+const auth = require('../../auth/authentication');
 
-
+exports.generateToken = (user) => {
+    return jwt.sign({ id: user._id }, secretKey, { expiresIn: '2h'})
+}
 
 exports.registerUser = (req, res) => {
     User.exists({ email: req.body.email }, (err, result) => {
@@ -11,15 +14,14 @@ exports.registerUser = (req, res) => {
             return res.status(400).json({
                 statusCode: 400,
                 status: false,
-                message: 'You made a bad request',
-                err
+                message: 'That\'s a bad request',                
             })
         }
         if(result) {
             return res.status(400).json({
                 statusCode: 400,
                 status: false,
-                message: 'The email is already registered'                
+                message: 'The email is unfortunately registered'                
             })
         }
 
@@ -46,16 +48,16 @@ exports.registerUser = (req, res) => {
                 res.status(201).json({
                     statusCode: 201,
                     status: true,
-                    message: 'User was created without no problem!',
+                    message: 'User was created without a problem!',
                     token: auth.generateToken(user)
+                    // token: 'testar'
                 })
             })
             .catch(err => {
                 res.status(500).json({
                     statusCode: 500,
                     status: false,
-                    message: 'Failed to create the user',
-                    err
+                    message: 'Failed to create the user',                    
                 })
             })
         })
@@ -73,7 +75,6 @@ exports.loginUser = (req, res) => {
                 err
             })
         }
-
         if(!user) {
             return res.status(401).json({
                 statusCode: 401,
@@ -81,6 +82,7 @@ exports.loginUser = (req, res) => {
                 message: 'That\'s an incorrect email or password ',                
             })
         }
+
 
         bcrypt.compare(req.body.password, user.passwordHash, (err, result) => {
             if(err) {
@@ -90,7 +92,6 @@ exports.loginUser = (req, res) => {
                     message: 'Hmm, something went wrong while decrypting the password',                    
                 })
             }
-
             if(!result) {
                 return res.status(401).json({
                     statusCode: 401,
@@ -102,9 +103,16 @@ exports.loginUser = (req, res) => {
             res.status(200).json({                
                 statusCode: 200,
                 status: true,
-                message: 'Success!',
-                token: auth.generateToken(user)
+                message: 'Logged in successfully!',
+                token: auth.generateToken(user),
+                // token: 'testar123'
+                
             })
+            
+            
+            exports.generateToken = (user) => {
+            return jwt.sign({ id: user._id }, secretKey, { expiresIn: '2h'})
+}
         })
     })
 }
