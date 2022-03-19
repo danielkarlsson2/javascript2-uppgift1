@@ -15,7 +15,6 @@ exports.getAllProducts = async (req, res) => {
             err
         })
     }
-
 }
 
 exports.getProductByID = (req, res) => {
@@ -29,7 +28,6 @@ exports.getProductByID = (req, res) => {
           message: 'You made a bad request'            
       })
     }
-
     if(!product) {
       return res.status(404).json({
         statusCode: 404,
@@ -37,7 +35,6 @@ exports.getProductByID = (req, res) => {
         message: 'Hey there, this product doesn\'t exist!'
       })
     }
-
     Product.findById(req.params.id)
       .then(data => res.status(200).json(data))
       .catch(err => {
@@ -47,7 +44,6 @@ exports.getProductByID = (req, res) => {
           message: err.message
         })
       })
-
   })
 }
 
@@ -74,36 +70,33 @@ exports.createNewProduct = (req, res) => {
           message: 'Failed to create the product',
           err
         })
-      })
-    
+      })    
 }
 
 
-exports.updateProduct = (req, res) => {
-
-   
+exports.updateProduct = (req, res) => {   
   
-      Product.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, data)  => {
+      Product.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })  
 
-      if(err) {
-            return res.status(500).json({
-              statusCode: 500,
-              status: false,
-              message: 'Something went wrong',
-              err
-            })
-          }
-
-          res.status(200).json(data)
-
-        })
-    
-  
+        .then(data => {
+          res.status(200).json({
+            statusCode: 200,
+            status: true,
+            message: 'Updated the product!',
+            data        
+        })  
+      })
+      .catch(err => {
+        if(err) {
+          return res.status(500).json({
+            statusCode: 500,
+            status: false,
+            message: 'Damn, we failed to update the product',
+          })
+        }
+      })
   }
-  
 
-
-  
 
 
 exports.deleteProduct = (req, res) => {
