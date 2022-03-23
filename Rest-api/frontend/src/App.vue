@@ -2,6 +2,7 @@
 <div class="home">
 
   <Navbar />
+  <navbar-mini />
 <img id="img-1">
   <div class="container mt-4">
     <router-view/>
@@ -12,9 +13,11 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
+import NavbarMini from './components/NavbarMini.vue'
 export default {
   components: {
     Navbar,
+    NavbarMini
   }
 }
 </script>
