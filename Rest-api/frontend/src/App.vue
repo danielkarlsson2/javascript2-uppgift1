@@ -2,22 +2,26 @@
 <div class="home">
 
   <Navbar />
-  <navbar-mini />
+  <!-- <Navbar-mini /> -->
 <img id="img-1">
   <div class="container mt-4">
     <router-view/>
 
   </div>
+<Footer class="mt-4 footer"/>
 </div>
+
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import NavbarMini from './components/NavbarMini.vue'
+// import NavbarMini from './components/NavbarMini.vue'
+import Footer from './components/Footer.vue'
 export default {
   components: {
     Navbar,
-    NavbarMini
+    // NavbarMini,
+    Footer
   }
 }
 </script>
@@ -32,6 +36,7 @@ body {
     /* background: black; */
     /* background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bXVzaWN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60'); */
     /* object-fit: cover; */
+    position: relative;
   
 }  
 #img-1 {
@@ -41,8 +46,18 @@ body {
   /* height: 100vh; */
 }
 .home{
-  position: relative;
+  /* position: relative; */
 }
+.color {
+  background: rgb(19, 88, 88);
+  color: white;
+}
+/* .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+} */
+
 
 
 </style>

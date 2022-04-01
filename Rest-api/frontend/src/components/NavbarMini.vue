@@ -36,7 +36,7 @@
           <a class="nav-link" href="#">Studio</a>
         </li>
         <!-- Navbar dropdown -->
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -46,9 +46,9 @@
             aria-expanded="false"
           >
             Dropdown
-          </a>
+          </a> -->
           <!-- Dropdown menu -->
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <a class="dropdown-item" href="#">Action</a>
             </li>
@@ -59,8 +59,8 @@
             <li>
               <a class="dropdown-item" href="#">Something else here</a>
             </li>
-          </ul>
-        </li>
+          </ul> -->
+        <!-- </li> -->
         
       </ul>
       <!-- Left links -->

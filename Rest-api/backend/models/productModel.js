@@ -120,13 +120,3 @@ exports.deleteProduct = (req, res) => {
         res.status(201).json(data)   
     })
 }
-
-// let cart = [];
-// exports.createNewOrder = (req, res) => {
-  
-//     const item = products.find((product) => product.id === id);
-//     cart.push(item);
-
-
-
-// }

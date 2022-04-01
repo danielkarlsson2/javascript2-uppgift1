@@ -7,8 +7,6 @@ router.get('/:id', productModel.getProductByID);
 
 
 router.post('/', auth.tokenVerification, productModel.createNewProduct);
-// skapa order
-// router.post('/', auth.tokenVerification, productModel.createNewOrder);
 
 router.put('/:id',auth.tokenVerification, productModel.updateProduct);
 

@@ -53,14 +53,13 @@
 <script>
 
 export default {
-  // name: 'HomeView',
-  // components: {
-    
-  // }
+  
 }
 </script>
 
 <style>
-
+.carousel {
+  transform: scale(0.8);
+}
 
 </style>

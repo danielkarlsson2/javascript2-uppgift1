@@ -1,8 +1,8 @@
 <template>
   <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black p-3">
   <!-- Container wrapper -->
-  <div class="container-fluid">
+  <div class="container-fluid d-flex">
     <!-- Toggle button -->
     <button
       class="navbar-toggler"
@@ -17,10 +17,11 @@
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse leftside" id="navbarSupportedContent">
       <!-- Navbar brand -->
       <router-link to="/">
-        <a class="navbar-brand mt-2 mt-lg-0" href="#"><i class="fa-solid fa-music m-3"></i>
+        <!-- <a class="navbar-brand mt-2 mt-lg-0" href="#"><i class="fa-solid fa-music m-3"></i> -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="#"><img src="https://media.kidozi.com/unsafe/600x600/img.kidozi.com/design/600/600/0a0909/45997/baaf5926892046a38f0ed7d359eafcca.png.jpg" alt="" class="ms-4 me-5 logo">
             MusicStore Online       
         </a>
       </router-link>
@@ -45,40 +46,40 @@
     <!-- Collapsible wrapper -->
 
     <!-- Right elements -->
-    <div class="d-flex align-items-center m-3">
-      <!-- Icon -->
-      <a class="text-reset me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-      </a>
+    <div class="d-flex align-items-center rightside">
+        <div class="dropdown ">
+              <a
+                class="text-reset me-3 dropdown-toggle hidden-arrow "
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-shopping-cart"></i>
+                <span v-if="cartCount" class="badge rounded-pill badge-notification bg-danger">{{cartCount}}</span>
+              </a>
+              <div @click="$event.stopPropagation()"
+                class="dropdown-menu dropdown-menu-lg-end dropdown-menu-right  cartWindow"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <ShoppingCart />
+              </div>
+            </div>
+   
 
-      <!-- Notifications -->
+    <!-- <div class="d-flex align-items-center m-3"> -->
+      <!-- Icon -->
       <!-- <div class="dropdown">
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
-            <a class="dropdown-item" href="#">Some news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Another news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
+          <a class="text-reset me-3" href="#">
+            <i class="fas fa-shopping-cart"></i>
+          
+          </a>
+          <Shopping-cart />       
+
       </div> -->
+
+      
       <!-- Avatar -->
       <div class="dropdown">
         <a
@@ -98,7 +99,7 @@
           />
         </a>
         <ul
-          class="dropdown-menu dropdown-menu-end"
+          class="dropdown-menu dropdown-menu-lg-end dropdown-menu-right"
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li>
@@ -113,17 +114,27 @@
         </ul>
       </div>
     </div>
+
+     </div>
     <!-- Right elements -->
-  </div>
+  <!-- </div> -->
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import ShoppingCart from './shoppingCart/ShoppingCart.vue'
 
 export default {
-    name: 'NavbarComponent'
+  components: {
+    ShoppingCart
+    },
+    name: 'NavbarComponent',
+    computed: {
+      ...mapGetters(['cartCount'])
+    }
 }
 </script>
 
@@ -139,5 +150,27 @@ export default {
 .rounded-circle {
   transform: scale(1.3);
   margin-left: 1rem;
+}
+
+.cartWindow {
+  min-width: 400px;
+}
+.container-fluid {
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  /* transform: scale(.5); */
+  max-height: 80px;
+  
+}
+
+@media only screen and (max-width: 600px){
+  .kundvagn {
+    align-items: center;
+    
+    max-width: 300px;
+  }
 }
 </style>
