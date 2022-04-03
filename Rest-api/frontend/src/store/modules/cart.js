@@ -24,21 +24,33 @@ export default {
     mutations: {
         ADD_PRODUCT: (state, {product, quantity}) => {
             let exist = state.cart.find(item => item.product._id === product._id)
+            console.log(exist)
             if (exist) {
                 exist.quantity += quantity
                 return
             }
             state.cart.push({product, quantity})
         },
-        DELETE_PRODUCT: (state, {product, quantity}) => {
-            let remove = state.cart.filter(item => item.product._id === product._id)
-            console.log(remove)
-            if (remove) {
-                remove.quantity -= quantity
+        SUBTRACT_PRODUCT: (state, {product, quantity}) => {
+            let subtractItem = state.cart.find(item => item.product._id === product._id)
+            console.log(subtractItem)
+            if (subtractItem) {
+                subtractItem.quantity -= quantity
                 return
             }
             state.cart.splice({product, quantity})
-        }
+        },
+        DELETE_PRODUCT: (state, {product, quantity}) => {
+            const removeItem = state.cart.filter(item => item.product._id === product._id)
+            console.log(state.cart)
+                if(removeItem) {
+                    state.cart.splice(state, {product, quantity})
+                    return 
+                }         
+        },
+
+
+
     },
     actions: {
         addProduct: ({commit}, {product, quantity}) => {
@@ -46,7 +58,10 @@ export default {
         },
         deleteProduct: ({commit}, {product, quantity}) => {
             commit('DELETE_PRODUCT', {product, quantity})
-        }
+        },
+        subtractProduct: ({commit}, {product, quantity}) => {
+            commit('SUBTRACT_PRODUCT', {product, quantity})
+        },
     },
     
   }

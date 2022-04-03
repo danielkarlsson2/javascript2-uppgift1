@@ -4,32 +4,45 @@
           <div class="img-container">
               <img :src="item.product.imageUrl" class="img-fluid">
           </div>    
-          <div class="ms-3">
+          <div class="ms-3 me-4 cart-title">
               <div class="fw-bold">{{item.product.title}}</div>  
               <div> {{item.quantity}} x {{item.product.price }}</div>
           </div>
       </div>
       <div class="btn-group-sm">
-        <button class="btn color">-</button>
-        <button class="btn color">+</button>
+        <button class="btn color" @click="subtractProduct({product: item.product, quantity})" >-</button>
+        
+        <button class="btn color" @click="addProduct({ product: item.product, quantity})">+</button>
       </div>
-      <button @click="deleteProduct({product, quantity})" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+      <button @click="deleteProduct(item.product)" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+      
   </div>
 </template>
 
 <script>
-import { mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 export default {
-  props: ['item'],
+  props: ['item', 'id'],
+   data() {
+        return {            
+            quantity: 1 
+        }
+    },
   methods: {
-    ...mapActions(['deleteProduct'])
-  }
+    ...mapActions(['addProduct', 'subtractProduct', 'deleteProduct']),
+  
+  },
+  
+  
 }
 </script>
 
 <style scoped>
 .img-container {
-  width: 90px;
+  width: 80px;
+}
+.cart-title {
+  max-width: 110px;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="vh-100 ">
+  <div class="vh-100 container">
     <div class="contact d-flex justify-content-between">
         <div class="left mt-5">
             <h3>Please contact us:</h3>
@@ -27,12 +27,7 @@ export default {
 </script>
 
 <style scoped>
-.left {
-  /* border: 1px solid pink; */
-}
-.right {
-  /* border: 1px solid blue; */
-}
+
   .img-store {
     max-height: 500px;
   }

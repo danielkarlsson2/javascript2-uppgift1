@@ -1,22 +1,30 @@
 const Cart = require('./users/userOrderSchema');
-const Product = require('./productSchema');
+// const Product = require('./productSchema');
 
 exports.createOrder = async (req, res) => {
 
     // Testar--------------
-    const {productId} = req.body;
-    const quantity = Number.parseInt(req.body.quantity);
-
-    try {
-        let cart = await Cart.cart();
-        let productDetails = await Product.productById(productId);
-            if(!productDetails) {
-                return res.status(500).json({
-                    type: "Not found",
-                    message: "INvalid"
-                })
-            }
-    }
+    Cart.create({
+        userId: req.body.objectId,
+        productId: req.body.objectId, ref: "Product",
+        cart: []
+    })
+    .then(data => {
+        res.status(201).json({
+          statusCode: 201,
+          status: true,
+          message: 'Created the product succesfully',
+          data
+        })
+      })
+      .catch(err => {
+        res.status(500).json({
+          statusCode: 500,
+          status: false,
+          message: 'Failed to create the product',
+          err
+        })
+      }) 
 
     // END--------------
 

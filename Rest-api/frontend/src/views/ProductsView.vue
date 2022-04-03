@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="container">
       <h1 class="text-center">Products</h1>
       <ProductGroup class="mt-2 prod"/>
     </div>
@@ -9,7 +9,6 @@
 <script>
 import { mapActions } from 'vuex'
 import ProductGroup from '../components/products/ProductGroup.vue'
-// import NavbarMini from '../components/NavbarMini.vue'
 
 export default {
   components: { ProductGroup,  },

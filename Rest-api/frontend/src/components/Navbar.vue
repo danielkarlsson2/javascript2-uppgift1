@@ -60,25 +60,12 @@
                 <span v-if="cartCount" class="badge rounded-pill badge-notification bg-danger">{{cartCount}}</span>
               </a>
               <div @click="$event.stopPropagation()"
-                class="dropdown-menu dropdown-menu-lg-end dropdown-menu-right  cartWindow"
+                class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end  cartWindow"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <ShoppingCart />
               </div>
             </div>
-   
-
-    <!-- <div class="d-flex align-items-center m-3"> -->
-      <!-- Icon -->
-      <!-- <div class="dropdown">
-          <a class="text-reset me-3" href="#">
-            <i class="fas fa-shopping-cart"></i>
-          
-          </a>
-          <Shopping-cart />       
-
-      </div> -->
-
       
       <!-- Avatar -->
       <div class="dropdown">
@@ -117,7 +104,7 @@
 
      </div>
     <!-- Right elements -->
-  <!-- </div> -->
+  
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
@@ -167,10 +154,10 @@ export default {
 }
 
 @media only screen and (max-width: 600px){
-  .kundvagn {
+  /* .kundvagn {
     align-items: center;
     
     max-width: 300px;
-  }
+  } */
 }
 </style>

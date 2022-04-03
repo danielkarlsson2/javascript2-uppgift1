@@ -1,6 +1,6 @@
 <template>
 
-<div v-if="product">
+<div v-if="product" class="vh-100 container mt-4">
     <div class="card singleCard ">
         <div class="col-lg-6">        
             <img :src="product.imageUrl" class="img-fluid">        
@@ -32,7 +32,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['getOneProduct', 'addProduct'])
+        ...mapActions(['getOneProduct', 'addProduct']),
     },
     computed: {
         ...mapGetters(['product'])
@@ -48,7 +48,6 @@ export default {
     font-weight: 700;
 }
 .singleCard{
-    /* border: 1px solid rgba(0, 0, 0, 0.116);  */
     border-radius: 10px;
     display: flex;
     flex-direction: row;

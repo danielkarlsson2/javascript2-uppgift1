@@ -40,8 +40,7 @@ export default {
   text-decoration: underline;  
 }
 .card {
-  color: black;
-  
+  color: black;  
 }
 h5 {
   color: red;
